@@ -3,19 +3,19 @@ import GoogleMapReact from 'google-map-react';
 import '../styles/map.css';
 import Pin from "./Pin";
 
-const Map = ({ data, zoomLevel }) => {
+const Map = ({ data, seqno}) => {
    
     const one= data.filter(
-        item => {return(item.seq === 1)
+        item => {return(item.seq === seqno)
      })
 
     return (
     <div className="google-map">
        <GoogleMapReact
         bootstrapURLKeys={{ key: process.env.REACT_APP_API_KEY }}
-        defaultCenter={{lat: one[0].location.lat,
+        center={{lat: one[0].location.lat,
                         lng: one[0].location.lon }}
-        defaultZoom={zoomLevel}
+        defaultZoom={19}
       >
       {data.map((loc)=>(
        <Pin
