@@ -12,7 +12,10 @@ const Pin = ({ text, info }) => {
       icon={locationIcon} style={{color:"tomato"}} 
       onClick={()=>{setVisible(!visible)} }
       className="pin-icon" />
-      <p className="pin-text" style={{color:"papayawhip"}}><b>{text}</b></p>
+      <p className={`${text? 'pin-text' : 'pin-miss'}`} 
+      style={{color:"papayawhip"}}>
+        <b>{(text)? text:'missing'}</b>
+        </p>
       {visible?
       <Detail info={info} setVisible={setVisible} />:
       null}

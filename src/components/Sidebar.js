@@ -16,7 +16,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 
 const drawerWidth = 240;
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme) => {
+  return{
   root: {
     display: 'flex',
   },
@@ -45,7 +46,10 @@ const useStyles = makeStyles((theme) => ({
     flexShrink: 0,
   },
   drawerPaper: {
+    background: '#535454',
+    color: '#fff',
     width: drawerWidth,
+    
   },
   drawerHeader: {
     display: 'flex',
@@ -58,6 +62,7 @@ const useStyles = makeStyles((theme) => ({
   content: {
     flexGrow: 1,
     padding: theme.spacing(3),
+    
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
@@ -70,8 +75,9 @@ const useStyles = makeStyles((theme) => ({
       duration: theme.transitions.duration.enteringScreen,
     }),
     marginLeft: 0,
+    
   },
-}));
+}});
 
 export default function Sidebar({data,setSeq}) {
    
@@ -106,7 +112,7 @@ export default function Sidebar({data,setSeq}) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap>
+          <Typography variant="h4" noWrap>
             Delivery
           </Typography>
         </Toolbar>
@@ -121,6 +127,7 @@ export default function Sidebar({data,setSeq}) {
         }}
       >
         <div className={classes.drawerHeader}>
+        <h3>Navigate to Task</h3>
           <IconButton onClick={handleDrawerClose}>
              <ChevronLeftIcon />
           </IconButton>
@@ -130,7 +137,8 @@ export default function Sidebar({data,setSeq}) {
           {seqsorted.map((item) => (
             <ListItem button key={item.seq} 
             onClick={()=>{setSeq(item.seq)} } >
-              <ListItemText primary={item.name} />
+              <ListItemText style={{color:'white'}} 
+              primary={(item.seq)?`Task ${item.seq}`:"Missing Sequence Number"}  />
             </ListItem>
           ))}
         </List>
