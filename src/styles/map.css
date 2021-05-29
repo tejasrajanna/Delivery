@@ -20,6 +20,13 @@
     background-color: green ;
     z-index:-1;
   }
+
+  .pin-miss {
+    font-size: 1em;
+    display: block;
+    background-color: red ;
+    z-index:-1;
+  }
   
   @media only screen and (min-width: 799px) {
     .google-map {
@@ -30,6 +37,10 @@
     .pin-text {
         font-size: 1.8em;
     }
+
+    .pin-miss {
+      font-size: 1.8em;
+  }
 
     .pin {
       width: 15vw;
