@@ -41,7 +41,7 @@ export default () => {
   const[seq,setSeq]=useState(null);
 
 useEffect(() => {
-    fetch('http://127.0.0.1:8000/test')
+    fetch('http://ec2-13-126-90-72.ap-south-1.compute.amazonaws.com:8082/user/1/tasks/')
             .then((response) => {
             if (response.ok) {
             return response.json();
