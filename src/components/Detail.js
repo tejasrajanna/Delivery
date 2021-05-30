@@ -10,14 +10,9 @@ const useStyles = makeStyles({
       minWidth: 160,
       zIndex:5,
   },
-
-    bullet: {
-      display: 'inline-block',
-      margin: '0 2px',
-      transform: 'scale(0.8)',
-    },
   });
-  
+ 
+//On click of location pin this card becomes visible which displays details of delivery  
 
 function Detail({info,setVisible}) {
     const classes = useStyles();

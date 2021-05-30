@@ -3,9 +3,11 @@ import locationIcon from '@iconify/icons-mdi/map-marker';
 import React,{useState} from 'react';
 import Detail from './Detail';
 
+//Location Pin placed on map based on latitude and longitude, sequence number displayed next to it
+
 const Pin = ({ text, info }) => {
     
-    const [visible,setVisible] = useState(false);
+    const [visible,setVisible] = useState(false); //decides visibility of card
       return (
     <div className="pin">
       <Icon 
@@ -17,7 +19,7 @@ const Pin = ({ text, info }) => {
         <b>{(text)? text:'miss'}</b>
         </p>
       {visible?
-      <Detail info={info} setVisible={setVisible} />:
+      <Detail info={info} setVisible={setVisible} />: //to display task details in card on click
       null}
     </div>
   )

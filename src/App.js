@@ -35,10 +35,10 @@ const useStyles = makeStyles((theme) => ({
 export default () => {
   
   const classes = useStyles();
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  const[seq,setSeq]=useState(null);
+  const [data, setData] = useState(null); //storing fetched data
+  const [loading, setLoading] = useState(true); //to display loading screen while fetching data
+  const [error, setError] = useState(null); //log errors
+  const[seq,setSeq]=useState(null); //to zoom in on specific task
 
 useEffect(() => {
     fetch('http://ec2-13-126-90-72.ap-south-1.compute.amazonaws.com:8082/user/1/tasks/')
@@ -49,8 +49,7 @@ useEffect(() => {
             })
             .then((data) => {
               setData(data);
-            
-              const min=seqmin(data)  
+              const min=seqmin(data);  
               setSeq(min);}
             )
             .catch((error) => {
@@ -63,10 +62,30 @@ useEffect(() => {
             }, []);
 
 if (loading) return "Loading...";
-if (error) return "Error!";
+
+//Window Alert if there is error fetching data but components still rendered with empty data
 
   return (
     <div className={classes.root}>
+      {error? 
+      <div>
+        <Grid container direction="row" alignItems="stretch">
+        <Grid item sm={3}>
+          <Paper>
+              <Drawer data={[]} setSeq={setSeq}/>
+          </Paper>
+        </Grid>
+        <Grid item xs={12} sm={9}>
+          <Paper className={classes.paper}>
+            <Map data={[]}   
+            seqno={seq}
+           />
+          </Paper>
+        </Grid>
+     </Grid>
+         {window.alert("Data missing/empty on backend")}   
+      </div>:
+      <div>
       <Grid container direction="row" alignItems="stretch">
         <Grid item sm={3}>
           <Paper>
@@ -81,6 +100,8 @@ if (error) return "Error!";
           </Paper>
         </Grid>
      </Grid>
+    </div>
+   }
     </div>
   );
 }

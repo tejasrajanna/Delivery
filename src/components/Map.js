@@ -6,7 +6,7 @@ import Pin from "./Pin";
 
 const Map = ({ data, seqno}) => {
    
-     const one= data.filter(
+     const one= data.filter(          //for default center
         item => {return(item.seq === seqno)
      })
     

@@ -13,8 +13,13 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 
-const drawerWidth = 341;
-const smallWidth= 200;
+const drawerWidth = 341; 
+const smallWidth= 200;  //for mobile devices
+
+//data sorted according to sequence number
+function seqso(info){
+return info.sort(function(a, b){return a.seq - b.seq});
+}
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -61,16 +66,22 @@ const useStyles = makeStyles(theme => ({
 }));
 function ResponsiveDrawer({data,setSeq}) {
   
-    const seqsorted= data.sort(function(a, b){return a.seq - b.seq});
+
+    const seqsorted= seqso(data); 
   const classes = useStyles();
   const theme = useTheme();
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+
+  const [mobileOpen, setMobileOpen] = React.useState(false); //hidden sidebar for mobile devices
+
 function handleDrawerToggle() {
     setMobileOpen(!mobileOpen)
   }
 const drawer = (
     <div>  
       <List>
+      {/* Sidebar which has list of tasks and on click of any task map is centered on that task
+        Some additional information such as address and ID displayed along with sequence number*/
+      }
       <Typography variant="h5" align="center" color="secondary" className={classes.head}>Task List</Typography>
       {seqsorted.map((item) => (
             <div className={classes.leftpanel} key={item.seq}>
@@ -95,6 +106,7 @@ const drawer = (
 return (
     <div className={classes.root}>
       <CssBaseline />
+      {/*App bar is permanent banner present at the top of the screen*/ }
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar>
           <IconButton
@@ -112,6 +124,7 @@ return (
         </Toolbar>
       </AppBar>
       
+{/* Sidebar hidden on mobile screens, can be accessed by the click of a button*/}
       <nav className={classes.drawer}>
         <Hidden smUp implementation="css">
           <Drawer
@@ -132,6 +145,8 @@ return (
             {drawer}
           </Drawer>
         </Hidden>
+
+{/* Sidebar permanent on larger screens */}
 <Hidden xsDown implementation="css">
           <Drawer
             className={classes.drawer}
