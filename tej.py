@@ -24,7 +24,7 @@ def call():
     
     b=[{"taskId":"1","location":{"lat":28.7041,"lon":77.1025},"name":"delivery task 3","customerInfo":"Mohan, N-69, Connaught Place, New Delhi"},
     {"taskId":"2","location":{"lat":28.7045,"lon":77.103},"name":"delivery task 1","customerInfo":"Raj, 64, Janpath, New Delhi"}]
-    return jsonify(b)
+    return jsonify(a)
 
 
 app.run(debug=True, port=8000)

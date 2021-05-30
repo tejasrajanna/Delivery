@@ -14,7 +14,7 @@ const Pin = ({ text, info }) => {
       className="pin-icon" />
       <p className={`${text? 'pin-text' : 'pin-miss'}`} 
       style={{color:"papayawhip"}}>
-        <b>{(text)? text:'missing'}</b>
+        <b>{(text)? text:'miss'}</b>
         </p>
       {visible?
       <Detail info={info} setVisible={setVisible} />:

@@ -1,6 +1,5 @@
  .google-map {
-    width: 100%;
-    height: 92.5vh;
+   height: 91vh;
   }
   
   .pin {
@@ -29,10 +28,10 @@
   }
   
   @media only screen and (min-width: 799px) {
-    .google-map {
-      height: 92.7vh;
-    }
   
+    .google-map {
+      height: 90.3vh;
+     }
 
     .pin-text {
         font-size: 1.8em;

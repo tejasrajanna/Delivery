@@ -2,13 +2,53 @@ import React from 'react';
 import GoogleMapReact from 'google-map-react';
 import '../styles/map.css';
 import Pin from "./Pin";
+//import Snackbar from '@material-ui/core/Snackbar';
+//import IconButton from '@material-ui/core/IconButton';
+//import CloseIcon from '@material-ui/icons/Close';
 
 const Map = ({ data, seqno}) => {
    
-   
-    const one= data.filter(
+    let one=null;
+    /*const [open, setOpen] = React.useState(false);
+
+    const handleClose = (event, reason) => {
+      if (reason === 'clickaway') {
+        return;
+      }
+  
+      setOpen(false);
+    };
+
+    if(seqno){*/
+     one= data.filter(
         item => {return(item.seq === seqno)
      })
+    //}
+     
+     /*else
+     {
+       setOpen(true);
+       return(
+       <Snackbar
+       anchorOrigin={{
+         vertical: 'bottom',
+         horizontal: 'left',
+       }}
+       open={open}
+       autoHideDuration={6000}
+       onClose={handleClose}
+       message="Sequence Numbers Missing"
+       action={
+         <React.Fragment>
+           <IconButton size="small" aria-label="close" color="inherit" onClick={()=> {handleClose}}>
+             <CloseIcon fontSize="small" />
+           </IconButton>
+         </React.Fragment>
+       }
+     />)
+     }*/
+
+    
 
     return (
     <div className="google-map">
