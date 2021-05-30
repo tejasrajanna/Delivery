@@ -1,20 +1,21 @@
  .google-map {
    height: 91vh;
+   z-index:3;
   }
   
   .pin {
     display: flex;
     align-items: center;
-    width: 10vw;
+    width: 15vw;
+    z-index: 4;
   }
   
   .pin-icon {
-    font-size: 3rem;
-    z-index:1;
+    font-size: 5rem;
   }
   
   .pin-text {
-    font-size: 1em;
+    font-size: 1.5em;
     display: block;
     background-color: green ;
     z-index:-1;
@@ -40,10 +41,6 @@
     .pin-miss {
       font-size: 1.8em;
   }
-
-    .pin {
-      width: 15vw;
-    }
   
     .pin-icon {
       font-size: 4rem;

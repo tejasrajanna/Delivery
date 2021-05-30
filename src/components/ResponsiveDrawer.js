@@ -71,19 +71,21 @@ function handleDrawerToggle() {
 const drawer = (
     <div>  
       <List>
-      <Typography variant="h5" align="center" color="secondary" className={classes.head}>Tasks</Typography>
+      <Typography variant="h5" align="center" color="secondary" className={classes.head}>Task List</Typography>
       {seqsorted.map((item) => (
-            <div className={classes.leftpanel}>
-              <ListItem button key={item.seq} 
+            <div className={classes.leftpanel} key={item.seq}>
+              <ListItem button  
               onClick={()=>{setSeq(item.seq)} } >
                   <ListItemText  
                   primary={(item.seq)?`Priority: ${item.seq}`:"Missing Priority"} 
-                  secondary={<div> 
-                                <div style= {{color:"#26a69a"}}> {(item.taskId)?`Task ID:${item.taskId}`:"Missing ID"}  
-                                </div>  
-                                <div> {(item.customerInfo)?`Address:${item.customerInfo.split(/,(.+)/)[1]}`:"Missing ID"}
-                                </div> 
-                            </div>} />
+                  secondary={<span> 
+                                <span style= {{color:"#26a69a"}}> 
+                                {(item.taskId)?`Task ID:${item.taskId}`:"Missing ID"}  
+                                </span>  <br/>
+                                <span> 
+                                    {(item.customerInfo)?`Address:${item.customerInfo.split(/,(.+)/)[1]}`:"Missing ID"}
+                                </span> 
+                            </span>} />
               </ListItem>
             </div>
             ))}

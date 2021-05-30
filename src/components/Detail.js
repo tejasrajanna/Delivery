@@ -1,15 +1,14 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
 import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
 import DeleteIcon from '@material-ui/icons/Cancel';
 import CardHeader from '@material-ui/core/CardHeader';
 
 const useStyles = makeStyles({
     root: {
-      minWidth: 200,
+      minWidth: 160,
+      zIndex:5,
   },
 
     bullet: {
@@ -29,17 +28,21 @@ function Detail({info,setVisible}) {
                 <IconButton
                   style={{color:"red"}} 
                   onClick={()=>{setVisible(false)}} > 
-                  <DeleteIcon/> 
+                  <DeleteIcon fontSize="small"/> 
                 </IconButton>
               }
-              title={info.name?info.name:'Name missing'}
-              subheader={`TaskId=${info.taskId?info.taskId:'missing'}`}
+              titleTypographyProps={{variant:'h6'}}
+              title={(info.seq)?`Priority: ${info.seq}`:"Missing Priority"}
+              subheader={<span> 
+                <span 
+                style= {{color:"indigo"}}> 
+                {(info.customerInfo)?`Name:${info.customerInfo.split(/,(.+)/)[0]}`:"Missing Name"}  
+                </span>  <br/>
+                <span style={{color:"#33691e"}}> 
+                  {(info.customerInfo)?`Delivery Address:${info.customerInfo.split(/,(.+)/)[1]}`:"Missing Address"}
+                </span> 
+            </span>}
               />
-      <CardContent>
-        <Typography variant="body2" color="textPrimary" >
-          {`Customerinfo=${info.customerInfo?info.customerInfo:'missing'}`}
-        </Typography>
-      </CardContent>
     </Card>
   )
 }
