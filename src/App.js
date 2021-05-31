@@ -69,7 +69,7 @@ if (loading) return "Loading...";
     <div className={classes.root}>
       {error? 
       <div>
-        <Grid container direction="row" alignItems="stretch">
+        <Grid container>
         <Grid item sm={3}>
           <Paper>
               <Drawer data={[]} setSeq={setSeq}/>
@@ -86,7 +86,7 @@ if (loading) return "Loading...";
          {window.alert("Data missing/empty on backend")}   
       </div>:
       <div>
-      <Grid container direction="row" alignItems="stretch">
+      <Grid container >
         <Grid item sm={3}>
           <Paper>
               <Drawer data={data} setSeq={setSeq}/>
