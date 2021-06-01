@@ -27,7 +27,7 @@ const Map = ({ data, seqno}) => {
           
       {data.map((loc)=>(
        <Pin
-          key={loc.taskId}
+          key={loc.seq}
           lat={loc.location.lat}
           lng={loc.location.lon}
           text={loc.seq}
