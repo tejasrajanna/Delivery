@@ -5,19 +5,14 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Drawer from "./components/ResponsiveDrawer";
 
-function numb(no)  //check if all sequence numbers missing
+function seqsort(info) //sort according to sequence number
 {
-    if (no === Number.MAX_VALUE)
-    {
-        return null;
-    }
-    else return no;
+      //console.log(info);
+      return info.sort(function(a, b){
+        return (a.seq === undefined) - (b.seq === undefined) || a.seq - b.seq;
+        });
 }
 
-function seqmin(info) //find minimum sequence number 
-{
-    return (info.reduce((min, p) => p.seq < min ? p.seq : min, Number.MAX_VALUE));
-}
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,25 +28,28 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default () => {
+
   
   const classes = useStyles();
+  //const [acseq,setAcseq]=useState(null);
   const [data, setData] = useState(null); //storing fetched data
   const [loading, setLoading] = useState(true); //to display loading screen while fetching data
   const [error, setError] = useState(null); //log errors
   const[seq,setSeq]=useState(null); //to zoom in on specific task
 
 useEffect(() => {
-    fetch('http://ec2-13-126-90-72.ap-south-1.compute.amazonaws.com:8082/user/1/tasks/')
+    fetch( 'http://ec2-13-126-90-72.ap-south-1.compute.amazonaws.com:8082/user/1/tasks/')
             .then((response) => {
             if (response.ok) {
             return response.json();
             }
             })
-            .then((data) => {
-              setData(data);
-              const min=seqmin(data);  
-              setSeq(min);}
-            )
+            .then((resdata) => {
+              setData(seqsort(resdata));
+              setSeq(resdata[0].seq);
+              console.log(resdata);
+              //console.log(resdata[0].seq);
+                })
             .catch((error) => {
             console.error("Error fetching data: ", error);
             setError(error);
@@ -95,7 +93,7 @@ if (loading) return "Loading...";
         <Grid item xs={12} sm={9}>
           <Paper className={classes.paper}>
             <Map data={data}   
-            seqno={numb(seq)}
+            seqno={seq}
            />
           </Paper>
         </Grid>

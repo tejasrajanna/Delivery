@@ -16,11 +16,6 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 const drawerWidth = 341; 
 const smallWidth= 200;  //for mobile devices
 
-//data sorted according to sequence number
-function seqso(info){
-return info.sort(function(a, b){return a.seq - b.seq});
-}
-
 const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
@@ -66,8 +61,6 @@ const useStyles = makeStyles(theme => ({
 }));
 function ResponsiveDrawer({data,setSeq}) {
   
-
-    const seqsorted= seqso(data); 
   const classes = useStyles();
   const theme = useTheme();
 
@@ -83,7 +76,7 @@ const drawer = (
         Some additional information such as address and ID displayed along with sequence number*/
       }
       <Typography variant="h5" align="center" color="secondary" className={classes.head}>Task List</Typography>
-      {seqsorted.map((item) => (
+      {data.map((item) => (
             <div className={classes.leftpanel} key={item.seq}>
               <ListItem button  
               onClick={()=>{setSeq(item.seq)} } >
