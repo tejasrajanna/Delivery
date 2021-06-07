@@ -1,4 +1,25 @@
-# Getting Started with Create React App
+#Problem statement:
+
+As a delivery executive, it is important to complete the deliveries in a time efficient manner.   
+For ex, a Zomato delivery person should be shown the deliveries in a specific order
+
+Build a React Js application which displays these delivery tasks in a specific order
+Use google maps to show the tasks on a map screen
+Each task should have a marker indicating the sequence number of the delivery task
+Map should be centered on the first task
+On selection/click of a specific task, display details of the task (name, description, customer information etc)
+
+Run tej.py and make sure the link in fetch is http://127.0.0.1:8000/test.
+This responds with a list of unordered tasks 
+
+Each task has some details
+taskId : task number
+seq: Order of the task 
+location: coordinates of the task
+name: Task name
+customerInfo: customer address
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
